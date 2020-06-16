@@ -2,6 +2,8 @@
 //
 
 #include <iostream>
+#include <string>
+using namespace std;
 struct Point
 {
 	double x;
@@ -187,10 +189,73 @@ void CalCircle2(double x1, double x2, double x3, double x4, double x5, double y1
 	std::cout << "xr1(" << xr1 << "," << yr1 << ") xr2(" << xr2 << "," << yr2 << ")\n";
 	std::cout << "右点(" << xr << "," << yr << ") 左点(" << xl << "," << yl << ") 圆上的点(" << xr3 << "," << yr3 << ")";
 }
+class MyNums
+{
+public:
+	MyNums(int num);
+	~MyNums();
+	void operator++()
+	{
+		cout << "MyNums的operator++()" << endl;
+		m_nums++;
+	}
+	void operator++(int num)
+	{
+		cout << "MyNums的operator++(int num)" << endl;
+		cout << "num is " << num << endl;
+		m_nums++;
+	}
+	void operator+(int num)
+	{
+		cout << "MyNums的operator+(int num)" << endl;
+		cout << "num is " << num << endl;
+		m_nums += num;
+	}
+	void ShowNums()
+	{
+		std::cout << "m_nums is " << m_nums << std::endl;
+	}
+private:
+	int m_nums;
+};
+class MyString
+{
+public:
+	MyString();
+	~MyString();
+	friend void setMyString(MyString& mystring, string s);
+private:
+	string m_str;
+};
+
+MyString::MyString()
+{
+	cout << "MyString的构造函数" << endl;
+}
+
+MyString::~MyString()
+{
+	cout << "m_str为" << m_str << endl << "MyString析构函数" << endl;
+}
+MyNums::MyNums(int num)
+{
+	m_nums = num;
+	std::cout << "MyNums构造函数" << std::endl;
+}
+
+MyNums::~MyNums()
+{
+	cout << "MyNums的析构函数" << endl;
+}
+
+void setMyString(MyString& mystring, string s)
+{
+	mystring.m_str = s;
+}
 
 int main()
 {
-	switch (0)
+	switch (2)
 	{
 	case 0:
 	{
@@ -203,7 +268,19 @@ int main()
 	}
 	case 1:
 	{
-
+		MyNums num1(10);
+		++num1;
+		num1.ShowNums();
+		num1+20;
+		num1.ShowNums();
+		num1 ++;
+		num1.ShowNums();
+		break;
+	}
+	case 2:
+	{
+		MyString ss;
+		setMyString(ss, "123");
 		break;
 	}
 	default:
