@@ -151,7 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Study.cpp" />
     <ClCompile Include="TestNormalCpp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Study.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

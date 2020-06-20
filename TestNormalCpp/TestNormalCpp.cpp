@@ -1,8 +1,6 @@
 ﻿// TestNormalCpp.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
-
-#include <iostream>
-#include <string>
+#include "Study.h"
 using namespace std;
 struct Point
 {
@@ -131,68 +129,16 @@ void CalCircle(double x1, double x2, double x3, double x4, double x5, double y1,
 #endif
 }
 
-class MyNums
+void test01()
 {
-public:
-	MyNums(int num)
-	{
-		m_nums = num;
-		std::cout << "MyNums构造函数" << std::endl;
-	}
-
-	~MyNums()
-	{
-		cout << "MyNums的析构函数" << endl;
-	}
-	void operator++()
-	{
-		cout << "MyNums的operator++()" << endl;
-		m_nums++;
-	}
-	void operator++(int num)
-	{
-		cout << "MyNums的operator++(int num)" << endl;
-		cout << "num is " << num << endl;
-		m_nums++;
-	}
-	void operator+(int num)
-	{
-		cout << "MyNums的operator+(int num)" << endl;
-		cout << "num is " << num << endl;
-		m_nums += num;
-	}
-	void ShowNums()
-	{
-		std::cout << "m_nums is " << m_nums << std::endl;
-	}
-private:
-	int m_nums;
-};
-class MyString
-{
-public:
-	MyString()
-	{
-		cout << "MyString的构造函数" << endl;
-	}
-
-	~MyString()
-	{
-		cout << "m_str为" << m_str << endl << "MyString析构函数" << endl;
-	}
-	friend void setMyString(MyString& mystring, string s);
-private:
-	string m_str;
-};
-
-void setMyString(MyString& mystring, string s)
-{
-	mystring.m_str = s;
+	test01(1, 1);
+	test01(1, false);
 }
 
 int main()
 {
-	switch (0)
+	int n = 5;
+	switch (n)
 	{
 	case 0:
 	{
@@ -230,6 +176,26 @@ int main()
 		MyString ss;
 		setMyString(ss, "123");
 		break;
+	}
+	case 3:
+	{
+		test01();
+	}
+	case 4:
+	{
+	}
+	case 5:
+	{
+		queue<int> q1;
+		q1.push(1);
+		q1.push(2);
+		q1.push(3);
+		int c = q1.size();
+		for (size_t i = 0; i < c; i++)
+		{
+			cout << q1.front() << endl;
+			q1.pop();
+		}
 	}
 	default:
 		break;
